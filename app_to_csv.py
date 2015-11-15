@@ -69,15 +69,14 @@ class AppToCSV:
                 entry = {
                     'First Name': app.get('first-name', ''),
                     'Last Name': app.get('last-name', ''),
-                    'School': app.get('school', ''),
-                    'Year': app.get('year', '').strip('\u'),
+                    'School': app.get('school', '').encode('ascii', 'ignore'),
+                    'Year': app.get('year', ''),
                     '18?': app.get('18yet', ''),
                     'Tshirt Size': app.get('shirt', '')
                 }
-
                 writer.writerow(entry)
 
-        print 'CSV created!'
+        print 'CSV {file_name} created!'.format(file_name=self.file_name)
 
 
 def main():
